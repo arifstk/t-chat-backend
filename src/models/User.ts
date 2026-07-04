@@ -12,6 +12,7 @@ export interface IUser {
   isOnline: boolean;
   lastSeen: Date;
   fcmToken?: string;
+  socketId?: string;
 }
 
 const UserSchema = new Schema<IUser>(
@@ -25,9 +26,9 @@ const UserSchema = new Schema<IUser>(
     isOnline: { type: Boolean, default: false },
     lastSeen: { type: Date, default: Date.now },
     fcmToken: { type: String },
+    socketId: { type: String },
   },
   { timestamps: true },
 );
 
 export default models.User || model<IUser>("User", UserSchema);
-
